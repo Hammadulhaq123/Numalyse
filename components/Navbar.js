@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import { Cedarville_Cursive } from 'next/font/google'
 import { HiMenuAlt1 } from 'react-icons/hi'
@@ -8,10 +9,18 @@ const supreme = Cedarville_Cursive({
     subsets: ['latin']
 })
 
+const handleSidebar = () => {
+    const sidebar = document.getElementById("sidebar-main");
+    sidebar.classList.toggle("-translate-x-60");
+    sidebar.classList.toggle("translate-x-0");
+}
+
+
+
 const Navbar = () => {
     return (
         <div className="w-[99%] text-[#04aa6d] h-16 p-4 rounded-[30px] flex justify-between items-center">
-            <button className="cursor-pointer">
+            <button className="cursor-pointer" onClick={handleSidebar}>
                 <HiMenuAlt1 className="text-xl " />
             </button>
 
