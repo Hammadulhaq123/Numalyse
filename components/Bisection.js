@@ -16,7 +16,7 @@ const Bisection = () => {
                 Solve the Bisction Method efficiently using <span className={supreme.className}>Numalyse.</span>
             </p>
             <Link href="/solve/bisection-method" className="w-auto bg-[#2e2d2d] text-[#04aa6d] text-sm font-bold rounded-full h-12 py-2 px-4 flex items-center gap-2 justify-between">
-                Try it out!
+                Calculate
                 <span className='w-8 h-8 bg-[#04aa6d] rounded-full flex justify-center items-center'>
                     <BsArrowUpRight className='text-white' />
                 </span>
