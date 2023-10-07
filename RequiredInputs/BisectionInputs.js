@@ -124,9 +124,7 @@ const BisectionInputs = () => {
                 <span style={{ color: "red" }} className="text-[#ff3838] text-sm">
                     <strong>Note:</strong>
                     <ol style={{ margin: "0 17px" }}>
-                        <li style={{ listStyle: "disc" }}>
-                            Wrap Variables in parenthesis (i.e. (x)^3 for x raise to power 3).
-                        </li>
+
                         <li style={{ listStyle: "disc" }}>
                             Use ^ for exponential (i.e. (x)^3 for x raise to power 3).
                         </li>
