@@ -19,8 +19,6 @@ const Newton = () => {
                 <span className='w-8 h-8 bg-[#fff] rounded-full flex justify-center items-center'>
                     <BsArrowUpRight className='text-[#04aa6d]' />
                 </span>
-
-
             </Link>
         </div>
     )
