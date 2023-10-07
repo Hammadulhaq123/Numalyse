@@ -12,6 +12,7 @@ const BisectionInputs = () => {
     const [data, setData] = useState([]);
     const [root, setRoot] = useState(null);
     const [load, setLoad] = useState(false);
+    const [error, setError] = useState(false)
 
     // Bisection methodology:
 
@@ -33,9 +34,7 @@ const BisectionInputs = () => {
 
         const checkPossibility = (x1, x2) => {
             let fx1 = func.replace(/x/g, x1);
-            console.log(fx1)
             fx1 = eval(fx1);
-            console.log(fx1)
             let fx2 = func.replace(/x/g, x2);
             fx2 = eval(fx2);
             if ((fx1 * fx2) < 0) {
@@ -81,10 +80,16 @@ const BisectionInputs = () => {
             setLoad(true);
             const possible = checkPossibility(x1, x2)
             if (possible) {
-                iterativeFunction(x1, x2);
+                try {
+                    iterativeFunction(x1, x2);
+                    setError(false)
+                }
+                catch (error) {
+                    setError(true);
+                }
             }
             else {
-                alert("Error in Calculating");
+                setError(true);
             }
         }
 
@@ -112,6 +117,7 @@ const BisectionInputs = () => {
 
     const calcBisection = () => {
         document.getElementById("bisectionData").classList.remove("hidden");
+        error && document.getElementById("toast-danger").classList.remove("hidden");
         calculateBisectionMethod(func.replace(/\^/g, '**').replace(/\x/g, '(x)'), lower, upper, tolerance);
     }
 
@@ -126,7 +132,10 @@ const BisectionInputs = () => {
                     <ol style={{ margin: "0 17px" }}>
 
                         <li style={{ listStyle: "disc" }}>
-                            Use ^ for exponential (i.e. (x)^3 for x raise to power 3).
+                            Use ^ for exponential (i.e. x^3 for x raise to power 3).
+                        </li>
+                        <li style={{ listStyle: "disc" }}>
+                            Use * for product (i.e. 3*x for 3 multiplied by x).
                         </li>
                     </ol>
                 </span>
@@ -135,16 +144,16 @@ const BisectionInputs = () => {
                     <input type="text" style={{ outline: "none" }} required placeholder="Algebric Function (One variable))" className="w-full h-12 rounded-full   border-4 border-[#04aa6d] border-dashed px-4 text-[#04aa6d]  focus:border-solid" value={func} onChange={handleFuncChange} />
                 </div>
                 <div className="flex w-full h-auto gap-2 flex-wrap lg:flex-nowrap">
-                    <div>
+                    <div className="w-full lg:w-[33%]">
                         <label style={{ padding: "0 10px" }} className="w-48 font-bold text-[#04aa6d] ">xLower</label>
                         <input type="text" style={{ outline: "none" }} placeholder="Lower Value (x0)" required className="w-full lg:w-[33%] h-12 rounded-full   border-4 border-[#04aa6d] border-dashed px-4 text-[#04aa6d]  focus:border-solid" value={lower} onChange={handleLowerChange} />
                     </div>
-                    <div>
+                    <div className="w-full lg:w-[33%]">
                         <label style={{ padding: "0 10px" }} className="w-48 font-bold text-[#04aa6d] ">xUpper</label>
                         <input type="text" style={{ outline: "none" }} required placeholder="Upper Value (x1)" className="w-full lg:w-[33%] h-12 rounded-full   border-4 border-[#04aa6d] border-dashed px-4 text-[#04aa6d]  focus:border-solid" value={upper} onChange={handleUpperChange} />
                     </div>
 
-                    <div>
+                    <div className="w-full lg:w-[33%]">
                         <label style={{ padding: "0 10px" }} className="w-48 font-bold text-[#04aa6d] ">Tolerance</label>
                         <input type="text" style={{ outline: "none" }} placeholder="Tolerance" className="w-full lg:w-[33%] h-12 rounded-full   border-4 border-[#04aa6d] border-dashed px-4 text-[#04aa6d]  focus:border-solid" value={tolerance} onChange={handleToleranceChange} />
                     </div>
@@ -157,7 +166,7 @@ const BisectionInputs = () => {
             <div className="mt-4 w-full">
                 {
 
-                    <BisectionAnalysisData root={root} data={data} load={load} func={func} />
+                    <BisectionAnalysisData root={root} data={data} load={load} func={func} error={error} />
                 }
             </div>
         </>
