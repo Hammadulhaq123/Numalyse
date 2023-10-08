@@ -1,7 +1,8 @@
 "use client"
 import { useState } from "react"
 import BisectionAnalysisData from "../AnalysisDisplays/BisectionAnalysisData";
-
+import functionPlot from "function-plot";
+import { derivative } from "mathjs";
 
 const BisectionInputs = () => {
 
@@ -14,6 +15,30 @@ const BisectionInputs = () => {
     const [load, setLoad] = useState(false);
     const [error, setError] = useState(false)
 
+
+    // Graph functionality:
+    function draw() {
+        try {
+            functionPlot({
+                target: '#plot',
+                grid: true,
+                width: 400,
+                height: 300,
+                data: [{
+                    fn: func,
+                    derivative: {
+                        fn: `${derivative(func, 'x')}`,
+                        updateOnMouseMove: false,
+                    },
+                    sampler: 'builtIn', //Use the evaluator of math.js
+                    graphType: 'polyline'
+                }]
+            });
+        } catch (err) {
+            console.log(err);
+            alert(err);
+        }
+    }
     // Bisection methodology:
 
     const calculateBisectionMethod = (func, xLow, xUp, tol) => {
@@ -28,7 +53,7 @@ const BisectionInputs = () => {
 
         const checkError = (xNew, xOld) => {
             let error = Math.abs((xNew - xOld) / xNew) * 100
-            return error;
+            return error.toFixed(3);
         }
 
 
@@ -55,7 +80,7 @@ const BisectionInputs = () => {
                 }
                 const possible = checkPossibility(x1, xm);
                 let fxm = eval('(' + func.replace(/x/g, xm) + ')');
-                data.push({ "iterCount": i, "xMean": xm.toFixed(4), "fxMean": fxm.toFixed(4), "error": error.toFixed(3) });
+                data.push({ "iterCount": i, "xMean": xm.toFixed(4), "fxMean": fxm.toFixed(4), "error": error });
                 i++;
                 if (possible) {
                     x2 = xm;
@@ -119,6 +144,7 @@ const BisectionInputs = () => {
         document.getElementById("bisectionData").classList.remove("hidden");
         error && document.getElementById("toast-danger").classList.remove("hidden");
         calculateBisectionMethod(func.replace(/\^/g, '**').replace(/\x/g, '(x)'), lower, upper, tolerance);
+        draw();
     }
 
     return (
