@@ -184,7 +184,7 @@ const BisectionInputs = () => {
                         <input type="text" style={{ outline: "none" }} placeholder="Tolerance" className="w-full lg:w-[33%] h-12 rounded-full   border-4 border-[#04aa6d] border-dashed px-4 text-[#04aa6d]  focus:border-solid" value={tolerance} onChange={handleToleranceChange} />
                     </div>
                 </div>
-                <button onClick={calcBisection} className="w-auto h-12 text-sm text-white font-bold p-4 flex justify-center items-center bg-[#04aa6d] rounded-full">
+                <button onClick={calcBisection} className="w-auto h-12 outline-none focus:outline-white focus:opacity-90 text-sm text-white font-bold p-4 flex justify-center items-center bg-[#04aa6d] rounded-full">
                     Calculate
                 </button>
             </div>
