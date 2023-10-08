@@ -15,7 +15,12 @@ const handleSidebar = () => {
     sidebar.classList.toggle("translate-x-0");
 }
 
+const openLogin = () => {
+    const login = document.getElementById("login-container");
+    login.classList.toggle("-translate-y-[13vh]")
+    login.classList.toggle("-translate-y-0")
 
+}
 
 const Navbar = () => {
     return (
@@ -29,7 +34,7 @@ const Navbar = () => {
                 Numalyse
             </Link>
 
-            <button className="text-md">
+            <button onClick={openLogin} className="text-md">
                 Login
             </button>
         </div>
