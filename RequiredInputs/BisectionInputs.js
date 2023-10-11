@@ -25,9 +25,9 @@ const BisectionInputs = () => {
                 width: 400,
                 height: 300,
                 data: [{
-                    fn: func,
+                    fn: func.replace(/X/g, 'x'),
                     derivative: {
-                        fn: `${derivative(func, 'x')}`,
+                        fn: `${derivative(func.replace(/X/g, 'x'), 'x')}`,
                         updateOnMouseMove: false,
                     },
                     sampler: 'builtIn', //Use the evaluator of math.js
@@ -143,7 +143,7 @@ const BisectionInputs = () => {
     const calcBisection = () => {
         document.getElementById("bisectionData").classList.remove("hidden");
         error && document.getElementById("toast-danger").classList.remove("hidden");
-        calculateBisectionMethod(func.replace(/\^/g, '**').replace(/\x/g, '(x)'), lower, upper, tolerance);
+        calculateBisectionMethod(func.replace(/X/g, 'x').replace(/\^/g, '**').replace(/\x/g, '(x)'), lower, upper, tolerance);
         draw();
     }
 
@@ -192,7 +192,7 @@ const BisectionInputs = () => {
             <div className="mt-4 w-full">
                 {
 
-                    <BisectionAnalysisData root={root} data={data} load={load} func={func} error={error} />
+                    <BisectionAnalysisData root={root} data={data} load={load} func={func.replace(/X/g, 'x')} error={error} />
                 }
             </div>
         </>

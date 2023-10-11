@@ -135,7 +135,7 @@ const NewtonInputs = () => {
     const calcNewton = () => {
         document.getElementById("newtonData").classList.remove("hidden");
         error && document.getElementById("toast-danger").classList.remove("hidden");
-        calculateNewtonMethod(func, initial, tolerance);
+        calculateNewtonMethod(func.replace(/X/g, 'x'), initial, tolerance);
         draw();
     }
 
@@ -180,7 +180,7 @@ const NewtonInputs = () => {
             <div className="mt-4 w-full">
                 {
 
-                    <NewtonAnalysisData root={root} data={data} load={load} func={func} error={error} />
+                    <NewtonAnalysisData root={root} data={data} load={load} func={func.replace(/X/g, 'x')} error={error} />
                 }
             </div>
         </>
