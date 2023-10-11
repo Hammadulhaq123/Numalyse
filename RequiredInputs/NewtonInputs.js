@@ -24,9 +24,9 @@ const NewtonInputs = () => {
                 width: 400,
                 height: 300,
                 data: [{
-                    fn: func,
+                    fn: func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x'),
                     derivative: {
-                        fn: `${derivative(func, 'x')}`,
+                        fn: `${derivative(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x'), 'x')}`,
                         updateOnMouseMove: false,
                     },
                     sampler: 'builtIn', //Use the evaluator of math.js
@@ -135,7 +135,7 @@ const NewtonInputs = () => {
     const calcNewton = () => {
         document.getElementById("newtonData").classList.remove("hidden");
         error && document.getElementById("toast-danger").classList.remove("hidden");
-        calculateNewtonMethod(func.replace(/X/g, 'x'), initial, tolerance);
+        calculateNewtonMethod(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x'), initial, tolerance);
         draw();
     }
 

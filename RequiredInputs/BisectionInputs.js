@@ -25,9 +25,9 @@ const BisectionInputs = () => {
                 width: 400,
                 height: 300,
                 data: [{
-                    fn: func.replace(/X/g, 'x'),
+                    fn: func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x'),
                     derivative: {
-                        fn: `${derivative(func.replace(/X/g, 'x'), 'x')}`,
+                        fn: `${derivative(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x'), 'x')}`,
                         updateOnMouseMove: false,
                     },
                     sampler: 'builtIn', //Use the evaluator of math.js
@@ -143,7 +143,7 @@ const BisectionInputs = () => {
     const calcBisection = () => {
         document.getElementById("bisectionData").classList.remove("hidden");
         error && document.getElementById("toast-danger").classList.remove("hidden");
-        calculateBisectionMethod(func.replace(/X/g, 'x').replace(/\^/g, '**').replace(/\x/g, '(x)'), lower, upper, tolerance);
+        calculateBisectionMethod(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x').replace(/\^/g, '**').replace(/\x/g, '(x)'), lower, upper, tolerance);
         draw();
     }
 
