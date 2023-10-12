@@ -51,7 +51,7 @@ const NewtonInputs = () => {
 
 
         const checkError = (xNew, xOld) => {
-            let error = Math.abs((xNew - xOld) / xNew) * 100;
+            let error = Math.abs((xNew - xOld) / xNew);
             return error.toFixed(3);
         }
 
@@ -137,6 +137,8 @@ const NewtonInputs = () => {
         error && document.getElementById("toast-danger").classList.remove("hidden");
         calculateNewtonMethod(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x'), initial, tolerance);
         draw();
+        document.getElementById("scrollToNewton").click();
+
     }
 
     return (

@@ -52,7 +52,7 @@ const BisectionInputs = () => {
 
 
         const checkError = (xNew, xOld) => {
-            let error = Math.abs((xNew - xOld) / xNew) * 100
+            let error = Math.abs((xNew - xOld) / xNew)
             return error.toFixed(3);
         }
 
@@ -145,6 +145,7 @@ const BisectionInputs = () => {
         error && document.getElementById("toast-danger").classList.remove("hidden");
         calculateBisectionMethod(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x').replace(/\^/g, '**').replace(/\x/g, '(x)'), lower, upper, tolerance);
         draw();
+        document.getElementById("scrollToBisection").click();
     }
 
     return (
