@@ -7,6 +7,7 @@ import ExportBtn from "../components/ExportBtn"
 const NewtonAnalysisData = ({ data, root, load, func, error }) => {
     return (
         <div id="newtonData" className="hidden w-full">
+            <a href="#newtonData" id="scrollToNewton" style={{ visibility: "hidden" }} />
 
             {
                 error ? <Alert text="Something wrong happened" /> :
@@ -60,7 +61,7 @@ const NewtonAnalysisData = ({ data, root, load, func, error }) => {
                             </div>
 
                             <div className="w-full h-auto p-4 text-[#2e2e2d] text-3xl font-semibold">
-                                x =
+                                Root =
                                 <span className="w-auto  text-[#04aa6d] font-bold text-5xl">
                                     {" " + root}
                                 </span>
