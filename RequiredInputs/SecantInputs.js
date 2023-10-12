@@ -53,20 +53,11 @@ const SecantInput = () => {
 
 
         const checkError = (xNew, xOld) => {
-            let error = Math.abs((xNew - xOld) / xNew) * 100
+            let error = Math.abs((xNew - xOld) / xNew)
             return error.toFixed(3);
         }
 
 
-        // const checkPossibility = (x0, x1) => {
-        //     let fx0 = func;
-        //     fx0 = evaluate(fx0, { x: x0 });
-        //     let fx1 = func;
-        //     fx1 = evaluate(fx1, { x: x1 });
-        //     // if ((fx1 * fx2) < 0) {
-        //     //     return true;
-        //     // } else return false;
-        // }
 
         const iterativeFunction = (x0, x1) => {
             let error = 100;
@@ -75,28 +66,32 @@ const SecantInput = () => {
             let fx1 = func;
             fx1 = evaluate(fx1, { x: x1 });
             let xm = x1 - fx1 * ((x1 - x0) / (fx1 - fx0));
-
+            let fxm = evaluate(func, { x: xm });
             allXM.unshift(xm);
+
+            error = checkError(allXM[0], x1)
             while (error > tolerance) {
 
-                let fxm = evaluate(func, { x: xm });
 
                 data.push({ "iterCount": i, "xMean": xm.toFixed(4), "fxMean": fxm.toFixed(4), "error": error });
                 i++;
                 if (fxm == 0) {
                     break;
                 }
-                else {
-                    // updating the first value with xm
-                    x0 = x1;
-                    x1 = xm;
 
-                    // updating the mean so that next time fxm is calculated with new mean
-                    xm = x1 - fx1 * ((x1 - x0) / (fx1 - fx0));
+                // updating the first value with xm
+                fxm = evaluate(func, { x: xm })
+                x0 = x1;
+                fx0 = fx1;
+                x1 = xm;
+                fx1 = fxm;
 
-                    allXM.unshift(xm);
-                    error = checkError(allXM[0], allXM[1]);
-                }
+                // updating the mean so that next time fxm is calculated with new mean
+                xm = x1 - fx1 * ((x1 - x0) / (fx1 - fx0));
+
+
+                allXM.unshift(xm);
+                error = checkError(allXM[0], allXM[1]);
             }
 
             root = allXM[0].toFixed(4)
@@ -144,6 +139,7 @@ const SecantInput = () => {
         error && document.getElementById("toast-danger").classList.remove("hidden");
         calculateBisectionMethod(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x').replace(/\x/g, '(x)'), lower, upper, tolerance);
         draw();
+        document.getElementById("scrollToSecant").click();
     }
 
     return (
