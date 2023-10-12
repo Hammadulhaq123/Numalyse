@@ -6,6 +6,7 @@ const SecantAnalysisData = ({ data, root, load, func, error }) => {
 
     return (
         <div id="secantData" className="hidden w-full">
+            <a href="#secantData" id="scrollToSecant" style={{ visibility: "hidden" }} />
             {
                 error ? <Alert text="Something wrong happened" /> :
                     load ?
@@ -59,7 +60,7 @@ const SecantAnalysisData = ({ data, root, load, func, error }) => {
                             </div>
 
                             <div className="w-full h-auto p-4 text-[#2e2e2d] text-3xl font-semibold">
-                                x =
+                                Root =
                                 <span className="w-auto  text-[#04aa6d] font-bold text-5xl">
                                     {" " + root}
                                 </span>
