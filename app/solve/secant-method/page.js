@@ -6,7 +6,6 @@ import SecantInput from '../../../RequiredInputs/SecantInputs'
 
 
 
-
 const supreme = Cedarville_Cursive({
     weight: '400',
     subsets: ['latin']
