@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from 'react'
-import { methodsList } from '../../data/list'
+import { methodsList } from '../../../data/list'
 import { Inconsolata } from "next/font/google"
 import { FiSearch } from "react-icons/fi"
-import Navbar from '../../components/Navbar'
-import GreenBox from './components/GreenBox'
-import GreenBorder from './components/GreenBorder'
-import GrayBox from './components/GrayBox'
-import GrayBorder from './components/GrayBorder'
+import Navbar from '../../../components/Navbar'
+import GreenBox from './GreenBox'
+import GreenBorder from './GreenBorder'
+import GrayBox from './GrayBox'
+import GrayBorder from './GrayBorder'
 
 
 
