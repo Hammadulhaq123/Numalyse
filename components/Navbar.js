@@ -18,7 +18,7 @@ const handleSidebar = () => {
 const openLogin = () => {
     const login = document.getElementById("login-container");
     login.classList.toggle("xl:-translate-y-[13vh]");
-    login.classList.toggle("-translate-y-[30vh]");
+    login.classList.toggle("-translate-y-[40vh]");
     login.classList.toggle("-translate-y-0")
 
 }
