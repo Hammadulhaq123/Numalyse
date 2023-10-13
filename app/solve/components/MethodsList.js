@@ -40,44 +40,71 @@ const MethodsList = () => {
             </form>
 
             {
-                methods?.map((method, key) => {
-                    return (
-                        <div key={key}>
-                            <div className='w-full h-auto flex p-4 items-center justify-start'>
+                methods
+                    ?.sort(function (a, b) {
+                        var catA = a.methodCategory.toUpperCase(); // ignore upper and lowercase
+                        var catB = b.methodCategory.toUpperCase(); // ignore upper and lowercase
+                        if (catA < catB) {
+                            return -1;
+                        }
+                        if (catA > catB) {
+                            return 1;
+                        }
+                        // names must be equal
+                        return 0;
+                    })
+                    ?.map((method, key) => {
+                        return (
+                            <div key={key}>
+                                <div className='w-full h-auto flex p-4 items-center justify-start'>
 
-                                <h1 className={` ${supreme.className} text-3xl font-bold text-[#04aa6c]`}>
-                                    {method?.methodCategory}
-                                </h1>
+                                    <h1 className={` ${supreme.className} text-3xl font-bold text-[#04aa6c]`}>
+                                        {method?.methodCategory}
+                                    </h1>
+                                </div>
+
+                                <div className='flex w-full h-auto rounded-[20px] bg-gray-100 justify-start flex-wrap gap-1 p-2'>
+                                    {
+
+                                        method
+                                            ?.methodList
+                                            ?.sort(function (a, b) {
+                                                var nameA = a.methodName.toUpperCase(); // ignore upper and lowercase
+                                                var nameB = b.methodName.toUpperCase(); // ignore upper and lowercase
+                                                if (nameA < nameB) {
+                                                    return -1;
+                                                }
+                                                if (nameA > nameB) {
+                                                    return 1;
+                                                }
+                                                // names must be equal
+                                                return 0;
+                                            })
+                                            ?.map((item, key) => (
+                                                // Checking Items style and rendering the component of the given style
+                                                (item?.style == "greenBorderBox") ?
+
+                                                    <GreenBorder key={key} className='text-green-500' name={item?.methodName} link={item?.methodLink} />
+
+                                                    : (item?.style == "greenBackgroundBox") ?
+                                                        <GreenBox key={key} name={item?.methodName} link={item?.methodLink} />
+
+                                                        : (item?.style == "grayBackgroundBox") ?
+                                                            <GrayBox key={key} name={item?.methodName} link={item?.methodLink} />
+
+                                                            : (item?.style == "grayBorderBox") &&
+                                                            <GrayBorder key={key} name={item?.methodName} link={item?.methodLink} />
+
+
+
+                                            ))
+                                    }
+                                </div>
                             </div>
 
-                            <div className='flex w-full h-auto rounded-[20px] bg-gray-100 justify-start flex-wrap gap-1 p-2'>
-                                {
+                        )
 
-                                    method?.methodList?.map((item, key) => (
-                                        // Checking Items style and rendering the component of the given style
-                                        (item?.style == "greenBorderBox") ?
-
-                                            <GreenBorder key={key} className='text-green-500' name={item?.methodName} link={item?.methodLink} />
-
-                                            : (item?.style == "greenBackgroundBox") ?
-                                                <GreenBox key={key} name={item?.methodName} link={item?.methodLink} />
-
-                                                : (item?.style == "grayBackgroundBox") ?
-                                                    <GrayBox key={key} name={item?.methodName} link={item?.methodLink} />
-
-                                                    : (item?.style == "grayBorderBox") &&
-                                                    <GrayBorder key={key} name={item?.methodName} link={item?.methodLink} />
-
-
-
-                                    ))
-                                }
-                            </div>
-                        </div>
-
-                    )
-
-                })
+                    })
             }
         </div>
     )
