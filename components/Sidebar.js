@@ -16,17 +16,17 @@ const sidebarClose = () => {
 
 const links = [
     {
-        link: "/solve/bisection-method",
+        link: "/solve/method/bisection-method",
         text: "Bisection Method",
     },
     {
-        link: "/solve/newton-method",
+        link: "/solve/method/newton-method",
         text: "Newton Method",
     },
 ]
 const Sidebar = () => {
     return (
-        <div id="sidebar-main" className='fixed top-0 overflow-y-auto transition-all duration-200 -translate-x-60 left-0 w-60 p-4 h-screen flex flex-col justify-start items-center gap-2 border-r-4 border-[#04aa6d] bg-gray-100 rounded-r-xl z-50'>
+        <div id="sidebar-main" className='fixed top-0 overflow-y-auto transition-all duration-200 -translate-x-60 left-0 w-60 p-4 h-screen flex flex-col justify-start items-center gap-2 border-r-4 border-[#04aa6d] bg-white rounded-r-xl z-50'>
             <button onClick={sidebarClose} className="absolute top-2 right-2 flex items-center justify-center text-white w-8 h-8 bg-[#04aa6d] rounded-lg">
                 <IoClose />
             </button>
