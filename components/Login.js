@@ -13,7 +13,7 @@ const closeLogin = () => {
 
 const Login = () => {
     return (
-        <div id='login-container' className='fixed transition-all rounded-b-[30px] duration-200 -translate-y-[40vh] xl:-translate-y-[13vh] top-0 left-0 h-[37vh] xl:h-[12vh] w-screen bg-gray-50'>
+        <div id='login-container' className='fixed transition-all rounded-b-[30px] duration-200 -translate-y-[40vh] xl:-translate-y-[13vh] top-0 left-0 h-[37vh] xl:h-[12vh] w-screen bg-gray-50 shadow-sm shadow-[#2e2e2e]'>
             <div className="w-full h-full flex flex-col xl:flex-row items-center gap-4 xl:gap-2 justify-start p-4">
                 <input className="w-full xl:w-[30%] h-14 rounded-full  border-4 outline-none focus:outline-none border-[#04aa6d] bg-white border-dashed text-[#04aa6d] px-4 py-2 text-xl" placeholder="Email" />
                 <input className="w-full xl:w-[30%] h-14 rounded-full border-4 outline-none focus:outline-none  border-[#04aa6d] bg-white border-dashed text-[#04aa6d] px-4 py-2 text-xl" placeholder="Password" />
