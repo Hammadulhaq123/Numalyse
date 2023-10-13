@@ -19,6 +19,8 @@ const BisectionInputs = () => {
     // Graph functionality:
     function draw() {
         try {
+            document.getElementById("plot").classList.remove("hidden");
+            document.getElementById("plot").classList.add("flex");
             functionPlot({
                 target: '#plot',
                 grid: true,
@@ -145,7 +147,9 @@ const BisectionInputs = () => {
         error && document.getElementById("toast-danger").classList.remove("hidden");
         calculateBisectionMethod(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x').replace(/\^/g, '**').replace(/\x/g, '(x)'), lower, upper, tolerance);
         draw();
-        document.getElementById("scrollToBisection").click();
+        document.getElementById("scrollToBisection").scrollIntoView({
+            behavior: 'smooth'
+        });
     }
 
     return (

@@ -18,6 +18,8 @@ const NewtonInputs = () => {
     // Graph functionality:
     function draw() {
         try {
+            document.getElementById("plot").classList.remove("hidden");
+            document.getElementById("plot").classList.add("flex");
             functionPlot({
                 target: '#plot',
                 grid: true,
@@ -137,7 +139,9 @@ const NewtonInputs = () => {
         error && document.getElementById("toast-danger").classList.remove("hidden");
         calculateNewtonMethod(func.replace(/[a-zA-Z]/g, 'x').replace(/X/g, 'x'), initial, tolerance);
         draw();
-        document.getElementById("scrollToNewton").click();
+        document.getElementById("scrollToNewton").scrollIntoView({
+            behavior: 'smooth'
+        });
 
     }
 
