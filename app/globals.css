@@ -35,3 +35,12 @@ body {
   background: var(--background-color);
   scroll-behavior: smooth;
 }
+
+/* Function Plot css */
+.x.axis .tick line {
+  stroke: white;
+}
+
+.y.axis .tick line {
+  stroke: white;
+}

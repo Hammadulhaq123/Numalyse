@@ -10,7 +10,7 @@ const supreme = Cedarville_Cursive({
 })
 export default function Home() {
   return (
-    <div className="flex flex-col w-full h-screen gap-4 p-4 items-start justify-start">
+    <div className="flex flex-col bg-gray-100 w-full h-screen gap-4 p-4 items-start justify-start">
       <div className="flex gap-4 w-full h-auto lg:h-[59%] flex-wrap lg:flex-nowrap">
         <Hero />
         <Bisection />
