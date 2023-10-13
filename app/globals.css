@@ -37,10 +37,11 @@ body {
 }
 
 /* Function Plot css */
-.x.axis .tick line {
+
+/* .x.axis .tick line {
   stroke: white;
 }
 
 .y.axis .tick line {
   stroke: white;
-}
+} */
