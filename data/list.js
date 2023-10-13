@@ -1,4 +1,4 @@
-export const methods = [
+export const methodsList = [
     {
         "methodCategory": "Mathematics", "methodList": [
             {
