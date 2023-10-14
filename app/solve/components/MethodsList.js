@@ -9,6 +9,7 @@ import GreenBox from './GreenBox'
 import GreenBorder from './GreenBorder'
 import GrayBox from './GrayBox'
 import GrayBorder from './GrayBorder'
+import Loader from '../../../components/Loader'
 
 
 
@@ -20,6 +21,7 @@ const supreme = Inconsolata({
 const MethodsList = () => {
     const [methods, setMethods] = useState(methodsList);
     const [filtered, setFiltered] = useState(methods);
+    const [loading, setLoading] = useState(false);
     const alphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
     const handleClick = (id) => {
@@ -34,14 +36,19 @@ const MethodsList = () => {
 
     const handleChange = (e) => {
         setValue(e.target.value);
-        if (searchValue == "") return setFiltered(methods);
-
+        setLoading(true);
+        if (searchValue == "") {
+            // setLoading(false)
+            setFiltered(methods)
+        }
         setTimeout(() => {
             setFiltered(methods.filter((method) => {
                 if (method.methodCategory.toLowerCase().includes(searchValue.toLowerCase())) {
+                    setLoading(false);
                     return (method.methodCategory.toLowerCase().includes(searchValue.toLowerCase()))
                 }
                 else {
+                    setLoading(false);
                     return (null)
                 }
             }))
@@ -52,12 +59,14 @@ const MethodsList = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (searchValue == "") return setFiltered(methods);
+        if (searchValue == "") { setFiltered(methods) };
         setFiltered(methods.filter((method) => {
             if (method.methodCategory.toLowerCase().includes(searchValue.toLowerCase())) {
+                setLoading(false);
                 return (method.methodCategory.toLowerCase().includes(searchValue.toLowerCase()))
             }
             else {
+                setLoading(false);
                 return (null)
             }
         }))
@@ -79,87 +88,82 @@ const MethodsList = () => {
             <div id='list' className='w-full h-auto flex gap-1'>
                 <div className='w-[96%] h-auto'>
                     {
+                        loading ? <Loader /> :
+                            filtered
+                                ?.sort(function (a, b) {
+                                    var catA = a.methodCategory.toUpperCase(); // ignore upper and lowercase
+                                    var catB = b.methodCategory.toUpperCase(); // ignore upper and lowercase
+                                    if (catA < catB) {
+                                        return -1;
+                                    }
+                                    if (catA > catB) {
+                                        return 1;
+                                    }
+                                    // cateogry must be equal
+                                    return 0;
+                                })
+                                ?.map((method, key) => {
+                                    return (
+                                        <div key={key}>
 
-                        filtered
-                            ?.sort(function (a, b) {
-                                var catA = a.methodCategory.toUpperCase(); // ignore upper and lowercase
-                                var catB = b.methodCategory.toUpperCase(); // ignore upper and lowercase
-                                if (catA < catB) {
-                                    return -1;
-                                }
-                                if (catA > catB) {
-                                    return 1;
-                                }
-                                // cateogry must be equal
-                                return 0;
-                            })
-                            // ?.filter((method) => {
-                            //     return (
-                            //         searchValue == "" ? method : method.methodCategory.toLowerCase().includes(searchValue.toLowerCase())
-                            //     )
-                            // })
-                            ?.map((method, key) => {
-                                return (
-                                    <div key={key}>
+                                            <div id={method.id} className='w-full h-auto flex p-4 items-center justify-start'>
 
-                                        <div id={method.id} className='w-full h-auto flex p-4 items-center justify-start'>
-
-                                            <h1 className={` ${supreme.className} text-3xl font-bold text-[#04aa6c]`}>
-                                                {method?.methodCategory}
-                                            </h1>
-                                        </div>
-                                        {
-                                            <div className='flex w-full h-auto rounded-[20px] bg-gray-100 justify-start flex-wrap gap-1 p-2'>
-                                                {
-                                                    method
-                                                        ?.methodList
-                                                        ?.sort(function (a, b) {
-                                                            var nameA = a.methodName.toUpperCase(); // ignore upper and lowercase
-                                                            var nameB = b.methodName.toUpperCase(); // ignore upper and lowercase
-                                                            if (nameA < nameB) {
-                                                                return -1;
-                                                            }
-                                                            if (nameA > nameB) {
-                                                                return 1;
-                                                            }
-                                                            // names must be equal
-                                                            return 0;
-                                                        })
-                                                        // ?.filter((item) => {
-                                                        //     return (
-                                                        //         searchValue == "" ? item : item.methodName.toLowerCase().includes(searchValue.toLowerCase())
-                                                        //     )
-                                                        // })
-                                                        ?.map((item, key) => (
-                                                            // Checking Items style and rendering the component of the given style
-                                                            (item?.style == "greenBorderBox") ?
-
-                                                                <GreenBorder key={key} className='text-green-500' name={item?.methodName} link={item?.methodLink} />
-
-                                                                : (item?.style == "greenBackgroundBox") ?
-                                                                    <GreenBox key={key} name={item?.methodName} link={item?.methodLink} />
-
-                                                                    : (item?.style == "grayBackgroundBox") ?
-                                                                        <GrayBox key={key} name={item?.methodName} link={item?.methodLink} />
-
-                                                                        : (item?.style == "grayBorderBox") &&
-                                                                        <GrayBorder key={key} name={item?.methodName} link={item?.methodLink} />
-
-
-
-                                                        ))
-                                                }
+                                                <h1 className={` ${supreme.className} text-3xl font-bold text-[#04aa6c]`}>
+                                                    {method?.methodCategory}
+                                                </h1>
                                             </div>
-                                        }
+                                            {
+                                                <div className='flex w-full h-auto rounded-[20px] bg-gray-100 justify-start flex-wrap gap-1 p-2'>
+                                                    {
+                                                        method
+                                                            ?.methodList
+                                                            ?.sort(function (a, b) {
+                                                                var nameA = a.methodName.toUpperCase(); // ignore upper and lowercase
+                                                                var nameB = b.methodName.toUpperCase(); // ignore upper and lowercase
+                                                                if (nameA < nameB) {
+                                                                    return -1;
+                                                                }
+                                                                if (nameA > nameB) {
+                                                                    return 1;
+                                                                }
+                                                                // names must be equal
+                                                                return 0;
+                                                            })
+                                                            // ?.filter((item) => {
+                                                            //     return (
+                                                            //         searchValue == "" ? item : item.methodName.toLowerCase().includes(searchValue.toLowerCase())
+                                                            //     )
+                                                            // })
+                                                            ?.map((item, key) => (
+                                                                // Checking Items style and rendering the component of the given style
+                                                                (item?.style == "greenBorderBox") ?
 
-                                    </div>
-                                )
+                                                                    <GreenBorder key={key} className='text-green-500' name={item?.methodName} link={item?.methodLink} />
 
-                            })
+                                                                    : (item?.style == "greenBackgroundBox") ?
+                                                                        <GreenBox key={key} name={item?.methodName} link={item?.methodLink} />
+
+                                                                        : (item?.style == "grayBackgroundBox") ?
+                                                                            <GrayBox key={key} name={item?.methodName} link={item?.methodLink} />
+
+                                                                            : (item?.style == "grayBorderBox") &&
+                                                                            <GrayBorder key={key} name={item?.methodName} link={item?.methodLink} />
+
+
+
+                                                            ))
+                                                    }
+                                                </div>
+                                            }
+
+                                        </div>
+                                    )
+
+                                })
 
                     }
                     {
-                        (filtered.length == 0) && <h1>Nothing here</h1>
+                        (filtered.length == 0) && <h1 className='text-5xl my-2 text-[#2e2e2e] mx-4 font-bold'>Oops! Nothing here..</h1>
                     }
                 </div>
                 <div className='flex flex-col items-center  justify-start w-[4%] h-auto text-sm font-bold  text-[#2e2e2e] gap-[8px] py-12'>
