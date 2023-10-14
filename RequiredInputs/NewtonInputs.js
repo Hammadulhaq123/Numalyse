@@ -165,7 +165,7 @@ const NewtonInputs = () => {
                 </span>
                 <div className="function w-full h-auto">
                     <label style={{ padding: "0 10px" }} className="w-48 font-bold text-[#04aa6d] ">Function(fx)</label>
-                    <input type="text" style={{ outline: "none" }} required placeholder="Algebric Function (One variable))" className="w-full h-12 rounded-full   border-4 border-[#04aa6d] border-dashed px-4 text-[#04aa6d]  focus:border-solid" value={func} onChange={handleFuncChange} />
+                    <input type="text" style={{ outline: "none" }} required placeholder="Algebric Function (One variable)" className="w-full h-12 rounded-full   border-4 border-[#04aa6d] border-dashed px-4 text-[#04aa6d]  focus:border-solid" value={func} onChange={handleFuncChange} />
                 </div>
                 <div className="flex w-full h-auto gap-2 flex-wrap lg:flex-nowrap">
                     <div className="w-full lg:w-[50%]">
