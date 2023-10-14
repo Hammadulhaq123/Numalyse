@@ -4,6 +4,14 @@ Numalyse is a sophisticated web application meticulously designed to solve a wid
 
 At its core, Numalyse serves as a comprehensive solution for students, professionals, and enthusiasts seeking accurate and efficient answers to complex mathematical challenges. Whether it's tackling iterative methods like the Bisection Method and Newton-Raphson Method, or delving into intricate algebraic equations, Numalyse excels in delivering precise solutions.
 
+## Contributing
+
+Contributions are always welcome!
+
+See `CONTRIBUTION.md` for ways to get started.
+
+Please adhere to this project's `code of conduct`.
+
 ## Cloning the Repository (NodeJS and npm Reqd.)
 
 Clone the project in any directory.
