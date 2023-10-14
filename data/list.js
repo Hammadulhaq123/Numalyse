@@ -1,6 +1,8 @@
 export const methodsList = [
     {
-        "methodCategory": "Mathematics", "methodList": [
+        "id": "M",
+        "methodCategory": "Mathematics",
+        "methodList": [
             {
                 "methodName": "Quadratic Equation Solver",
                 "methodLink": "/solve/method/quadratic-equation-solver",
@@ -10,7 +12,9 @@ export const methodsList = [
         ]
     },
     {
-        "methodCategory": "Numerical Analysis", "methodList": [
+        "id": "N",
+        "methodCategory": "Numerical Analysis",
+        "methodList": [
             {
                 "methodName": "Bisection Method",
                 "methodLink": "/solve/method/bisection-method",
@@ -28,11 +32,13 @@ export const methodsList = [
                 "style": "greenBackgroundBox"
 
             },
-            // {
-            //     "methodName": "Fixed Point Method",
-            //     "methodLink": "/solve/method/fixed-point-method",
-            //     "style": "grayBorderBox"
-            // }
+            {
+                "methodName": "Fixed Point Method",
+                "methodLink": "/solve/method/fixed-point-method",
+                "style": "grayBorderBox"
+
+            },
         ]
     },
+
 ]
