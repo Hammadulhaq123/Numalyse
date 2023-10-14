@@ -24,8 +24,8 @@ const BisectionAnalysisData = ({ data, root, load, func, error }) => {
 
 
                             <div className="overflow-x-auto w-full sm:-mx-6 lg:-mx-8">
-                                <div className="flex flex-col gap-2 min-w-full py-2 sm:px-6 lg:px-8">
-                                    <div className="overflow-hidden w-full bg-gray-200 p-8 rounded-[16px]">
+                                <div className="flex flex-col gap-2 min-w-full  py-2 sm:px-6 lg:px-8">
+                                    <div className="overflow-hidden w-full bg-white p-8 rounded-[16px]">
                                         <table id="tbl_exporttable_to_xls" className=" w-full text-left rounded-[16px]  text-sm font-light">
                                             <thead className="border-b w-full h-12  font-medium ">
                                                 <tr className="w-full ">
