@@ -4,7 +4,7 @@ export const methodsList = [
         "methodCategory": "Mathematics",
         "methodList": [
             {
-                "methodName": "Quadratic Equation Solver",
+                "methodName": "Quadratic Solver",
                 "methodLink": "/solve/method/quadratic-equation-solver",
                 "style": "greenBorderBox"
 
