@@ -8,7 +8,7 @@ const supreme = Cedarville_Cursive({
 })
 const Bisection = () => {
     return (
-        <div className="w-full h-[25rem]] bg-gray-100 border-4 border-[#2e2e2d] border-dashed lg:w-[40%] lg:h-full rounded-[20px] flex flex-col gap-6 justify-center items-center p-4">
+        <div className="w-full h-[25rem]] bg-gray-50 border-4 border-[#2e2e2d] border-dashed lg:w-[40%] lg:h-full rounded-[20px] flex flex-col gap-6 justify-center items-center p-4">
             <h1 className={` w-[90%] text-[#04aa6d] text-center text-5xl font-extrabold `}>
                 Bisection Method
             </h1>

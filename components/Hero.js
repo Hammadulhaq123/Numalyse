@@ -12,7 +12,7 @@ const supreme = Source_Sans_3({
 
 const Hero = () => {
     return (
-        <div className="w-full h-[25rem]]  shadow-inner bg-gray-100 lg:w-[60%] lg:h-full rounded-[20px] flex flex-col justify-start items-center p-4">
+        <div className="w-full h-[25rem]]  shadow-inner bg-white lg:w-[60%] lg:h-full rounded-[20px] flex flex-col justify-start items-center p-4">
             <Navbar />
 
             <div className="flex flex-col gap-6 justify-center items-center mt-auto w-[99%] h-[24rem]">
