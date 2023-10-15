@@ -21,7 +21,7 @@ const Hero = () => {
                     Numalyse your Data!
                 </h1>
                 <p className="w-8/12 text-center text-lg font-normal">
-                    This website is going to solve the do the numerical analysis problems for you...
+                    This website is designed to solve the do the numerical analysis problems for you...
                 </p>
 
                 <Button />
