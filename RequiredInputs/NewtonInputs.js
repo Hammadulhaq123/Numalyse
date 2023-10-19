@@ -46,7 +46,7 @@ const NewtonInputs = () => {
     const calculateNewtonMethod = (func, initial, tol) => {
         let root = null;
         let data = [];
-        const tolerance = parseInt(tol);
+        const tolerance = parseFloat(tol);
         let initialVal = parseInt(initial);
         let allXM = [] // All values of xm will store in this variable
         let i = 1;
@@ -96,7 +96,7 @@ const NewtonInputs = () => {
 
         }
 
-        const calculateXwithBisection = (initialVal) => {
+        const calculateXwithNewton = (initialVal) => {
             setLoad(true);
             const possible = checkPossibility(initialVal)
             if (possible) {
@@ -115,7 +115,7 @@ const NewtonInputs = () => {
             }
         }
 
-        calculateXwithBisection(initialVal);
+        calculateXwithNewton(initialVal);
 
     }
 
