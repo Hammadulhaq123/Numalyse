@@ -46,7 +46,7 @@ const BisectionInputs = () => {
     const calculateBisectionMethod = (func, xLow, xUp, tol) => {
         let root = null;
         let data = [];
-        const tolerance = parseInt(tol);
+        const tolerance = parseFloat(tol);
         let x1 = parseInt(xLow);
         let x2 = parseInt(xUp);
         let allXM = [] // All values of xm will store in this variable
