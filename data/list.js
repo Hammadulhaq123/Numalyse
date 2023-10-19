@@ -34,7 +34,7 @@ export const methodsList = [
             },
             {
                 "methodName": "Steffen's Method",
-                "methodLink": "/solve/method/setffen-method",
+                "methodLink": "/solve/method/steffen-method",
                 "style": "grayBorderBox"
 
             },
