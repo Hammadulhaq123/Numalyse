@@ -33,8 +33,8 @@ export const methodsList = [
 
             },
             {
-                "methodName": "Fixed Point Method",
-                "methodLink": "/solve/method/fixed-point-method",
+                "methodName": "Steffen's Method",
+                "methodLink": "/solve/method/setffen-method",
                 "style": "grayBorderBox"
 
             },
