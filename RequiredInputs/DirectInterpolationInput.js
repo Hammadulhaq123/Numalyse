@@ -1,7 +1,6 @@
 "use client"
 import { useState } from "react"
 import DirectInterpData from "../AnalysisDisplays/DirectInterpData";
-import { evaluate, derivative } from "mathjs";
 import functionPlot from "function-plot";
 
 const NewtonInputs = () => {
@@ -21,7 +20,27 @@ const NewtonInputs = () => {
         return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));
     }
 
-
+    // Graph functionality:
+    function draw() {
+        try {
+            document.getElementById("plot").classList.remove("hidden");
+            document.getElementById("plot").classList.add("flex");
+            functionPlot({
+                target: '#plot',
+                grid: true,
+                width: 400,
+                height: 300,
+                data: [{
+                    fn: `${y1} + (${y2} - ${y1}) * ((x - ${x1}) / (${x2} - ${x1}))`,
+                    sampler: 'builtIn', //Use the evaluator of math.js
+                    graphType: 'polyline'
+                }]
+            });
+        } catch (err) {
+            console.log(err);
+            alert(err);
+        }
+    }
 
 
 
@@ -34,7 +53,8 @@ const NewtonInputs = () => {
             const parsey1 = parseFloat(y1);
             const parsex2 = parseFloat(x2);
             const parsey2 = parseFloat(y2);
-            setRoot(linearInterpolate(parsex, parsex1, parsex2, parsey1, parsey2).toFixed(4));
+            setRoot(linearInterpolate(parsex, parsex1, parsex2, parsey1, parsey2).toFixed(2));
+            draw();
             setLoad(false);
         }
         catch {
