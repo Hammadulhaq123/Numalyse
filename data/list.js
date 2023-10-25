@@ -4,7 +4,7 @@ export const methodsList = [
         "methodCategory": "Mathematics",
         "methodList": [
             {
-                "methodName": "Quadratic Solver",
+                "methodName": "Quadratic Formula",
                 "methodLink": "/solve/method/quadratic-equation-solver",
                 "style": "greenBorderBox"
 
@@ -36,6 +36,12 @@ export const methodsList = [
                 "methodName": "Steffen's Method",
                 "methodLink": "/solve/method/steffen-method",
                 "style": "grayBorderBox"
+
+            },
+            {
+                "methodName": "Direct Interpolation",
+                "methodLink": "/solve/method/direct-interpolation-method",
+                "style": "greenBackgroundBox"
 
             },
         ]
