@@ -34,7 +34,7 @@ const NewtonInputs = () => {
             const parsey1 = parseFloat(y1);
             const parsex2 = parseFloat(x2);
             const parsey2 = parseFloat(y2);
-            setRoot(linearInterpolate(parsex, parsex1, parsex2, parsey1, parsey2));
+            setRoot(linearInterpolate(parsex, parsex1, parsex2, parsey1, parsey2).toFixed(4));
             setLoad(false);
         }
         catch {

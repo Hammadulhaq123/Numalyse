@@ -13,7 +13,7 @@ const DirectInterpData = ({ load, root, error, x }) => {
                                 <span>
 
                                     {`y = f(${x})`} =
-                                    <span className="w-auto  text-[#04aa6d] font-bold text-5xl" dangerouslySetInnerHTML={{ __html: ` ${root.toFixed(4)}` }} />
+                                    <span className="w-auto  text-[#04aa6d] font-bold text-5xl" dangerouslySetInnerHTML={{ __html: ` ${root}` }} />
                                 </span>
                             </div>
                         </div>
