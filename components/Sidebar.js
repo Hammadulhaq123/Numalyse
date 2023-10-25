@@ -35,8 +35,8 @@ const Sidebar = () => {
                 methodsList?.map((method, key) => {
                     return (
 
-                        <>
-                            <h1 className={`${inter.className} my-1 text-lg `} key={key}>{method?.methodCategory}</h1>
+                        <div key={key} className="flex flex-col gap-1">
+                            <h1 className={`${inter.className} my-1 text-lg `}>{method?.methodCategory}</h1>
 
                             {
                                 method?.methodList?.map((link, key) => {
@@ -46,7 +46,7 @@ const Sidebar = () => {
                                 }
                                 )
                             }
-                        </>
+                        </div>
                     )
                 }
 
